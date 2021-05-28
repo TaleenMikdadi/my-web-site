@@ -9,62 +9,46 @@
 <script type='text/javascript' src='https://code.jquery.com/jquery-1.11.0.js'>
 </script>
 <script type='text/javascript'>//<![CDATA[
-$(function(){
-	$('#clickMe').click(function () {
-	var uri = 'https://extendsclass.com/api/json-storage/bin/fbddafe';
-	var ids = 0;
-	var data_src = '';
-	$('#info').html('Connecting to data storage ...');
-	$.ajax(
-	{url: uri,
-	type: 'GET',
-	data: '',
-	contentType: 'application/json; charset=utf-8',
-	dataType: 'json',
-	success: function (data, textStatus, jqXHR) {
-	 $('#info').html('Connected! ...');
-	ids = data.ids;
-	var newdata_Location = $('#Location').val();
-	var newdata_Types = $('#Types').val();
-	var newdata_Area = $('#Area').val();
-	var newdata_Describtion = $('#Describtion').val();
-	var newdata_Price = $('#Price').val();
-	var newdata_Photo1 = $('#Photo1').val();
-	var newdata_Photo2 = $('#Photo2').val();
-	var newdata_Photo3 = $('#Photo3').val();
-	var newdata_Photo4 = $('#Photo4').val();
-	var newdata_Photo5 = $('#Photo5').val();
-	var newdata_id = ++ids;
-	data['data'].push({'Location':newdata_Location,'Types':newdata_Types,'Area':newdata_Area,'Describtion':newdata_Describtion,'Price':newdata_Price,'Photo1':newdata_Photo1, 'Photo2':newdata_Photo2, 'Photo3':newdata_Photo3, 'Photo4':newdata_Photo4, 'Photo5':newdata_Photo5,'id':newdata_id+''});
-	data.ids = ids;
-	var jsonStr = JSON.stringify(data);
-	$('#info').html('Adding new data ....')
+	function addProperty(){
+
+
+	var model={ 
+	'location' : $('#location').val(),
+	'type' : $('#types').val(),
+	'area' : $('#area').val(),
+	'describtion': $('#describtion').val(),
+	'price' : $('#price').val(),
+	'photo1' : $('#photo1').val(),
+	'photo2' : $('#photo2').val(),
+	'photo3' : $('#photo3').val(),
+	'photo4' : $('#photo4').val(),
+	'photo5' : $('#photo5').val(),
+	}
+	//var newdata_id = ++ids;
+	//data['data'].push({'Location':newdata_Location,'Types':newdata_Types,'Area':newdata_Area,'Describtion':newdata_Describtion,'Price':newdata_Price,'Photo1':newdata_Photo1, 'Photo2':newdata_Photo2, 'Photo3':newdata_Photo3, 'Photo4':newdata_Photo4, 'Photo5':newdata_Photo5,'id':newdata_id+''});
+	//data.ids = ids;
+	//var jsonStr = JSON.stringify(data);
+	//$('#info').html('Adding new data ....')
+	console.log(model);
 	$.ajax({
-	url: 'https://extendsclass.com/api/json-storage/bin/fbddafe',
-	type: 'PUT',
-	data: jsonStr,
+	//url: 'https://extendsclass.com/api/json-storage/bin/fbddafe',
+	url:'user/addPro',
+	type: 'POST',
+	//data: jsonStr,
 	contentType: 'application/json; charset=utf-8',
 	dataType: 'json',
-	success: function (data, textStatus, jqXHR) {
-	var json = JSON.stringify(data);
-	$('#info').html('Done!');
-	$('#Location').val('');
-	$('#Types').val('');
-	$('#Area').val('');
-	$('#Describtion').val('');
-	$('#Price').val('');
-	$('#Photo1').val('');
-	$('#Photo2').val('');
-	$('#Photo3').val('');
-	$('#Photo4').val('');
-	$('#Photo5').val('');
+	data:this.JSON.stringify(model),
+	success: function (data) {
+		console.log(data);
+		alert("added");
+	},error:function(jqXHR,testStatus,errorThrown)
+	{
+		alert("error");
 	}
-	});
 	}
-	});
-	});
-	});
-	//]]></script>
+	);
+	}
+	</script>
 </head> 
 <body>
 <body style="background-color: #228B22;">
@@ -72,27 +56,27 @@ $(function(){
 <h2>Add Property</h2>
 <div>
  <label for='Location'>Location</label><br>
-<input type='text' id='Location' name='Location'><br>
+<input type='text' id='location' name='location'><br>
  <label for='Types'>Type</label><br>
-<input type='text' id='Types' name='Type'><br>
+<input type='text' id='types' name='type'><br>
  <label for='Area'>Area</label><br>
-<input type='text' id='Area' name='Area'><br>
+<input type='text' id='area' name='area'><br>
  <label for='Describtion'>Describtion</label><br>
-<input type='text' id='Describtion' name='Describtion'><br>
+<input type='text' id='describtion' name='describtion'><br>
  <label for='Price'>Price</label><br>
-<input type='text' id='Price' name='Price'><br>
+<input type='text' id='price' name='price'><br>
  <label for='Photo1'>Photo1</label><br>
-<input type='text' id='Photo1' name='Photo1'><br>
+<input type='text' id='photo1' name='photo1'><br>
  <label for='Photo2'>Photo2</label><br>
-<input type='text' id='Photo2' name='Photo2'><br>
+<input type='text' id='photo2' name='photo2'><br>
  <label for='Photo3'>Photo3</label><br>
-<input type='text' id='Photo3' name='Photo3'><br>
+<input type='text' id='photo3' name='photo3'><br>
  <label for='Photo4'>Photo4</label><br>
-<input type='text' id='Photo4' name='Photo4'><br>
+<input type='text' id='photo4' name='photo4'><br>
  <label for='Photo5'>Photo5</label><br>
-<input type='text' id='Photo5' name='Photo5'><br>
+<input type='text' id='photo5' name='photo5'><br>
 <br>
-<input id='clickMe' type='button' value='Add Property' /> 
+<input id='clickMe' type='button' onclick='addProperty();' value='Add Property' /> 
  <a href='BuyAndSell_Properties.html'class="classname">Back To Home Page</a><br>
 </div>
 </body>

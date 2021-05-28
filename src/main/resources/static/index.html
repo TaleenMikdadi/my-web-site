@@ -15,47 +15,49 @@
 	 <input type="text" name="email" id="email" placeholder="Enter Username">
 	 <p> Password </p>
 	 <input type="password" name="password" id="password" placeholder="Enter Password"> <br>
-	 <button  class="btn btn-success" type="submit" onlick ="login()" >Login</button> <br>
+	 <button  class="btn btn-success" id="login" >Login</button> <br>
 	 <a href='SignUp.html' >Don't Have An Account?</a>
 	 </form>
 	 </div>
 	 
 	 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	
+	<script>
+		$(document).ready(function (){
+		
+		$("#login").on('click',function(){
+			var password= $("#password").val();
+			var email = $("#email").val();
+			if(password =="" || email == "")
+				alert("empty try again");
+				
+			
+			else{
+				
+				 $.ajax({
+		                url: "/admin/"+email+"/"+password,
+		                method:'GET',
+		                dataType:'json',
+		                success:function(data){
+		                	console.log(data);
+		                    alert("good");
+		                    //window.open("course.html");
+		                    top.location.href = 'BuyAndSell_Properties.html';
+		                    
+		                
+		            },error: function(jqXHR,testStatus,errorThrown){
+		            	alert("faild !!!");
+		            }
+		         });
+			}
+		});
+		
+	});
+</script>
+		
+<!-- end  new  script  -->
 	 
-	 <script>
-	 
-	 	function login()
-	 	{
-	 		var email= this.$("#email").val();
-	 		var password = this.$("#password").val();
-	 		
-	 		$.ajax(
-	 				{
-	 					type:"GET",
-	 					url : "/admin/login/"+email+"/"+password,
-	 					
-	 					ContentType:"application/json ;charset=UTF-8",
-	 					alert("yes");
-	 					crossOrigin:true,
-	 					dataType:"json",
-	 					headers: {
-	 						'Accept': 'application/json',
-	 						'Content-Type': 'application/json'
-	 						},
-	 					success:function(data)
-	 					{
-	 						alert("done");
-	 						top.location.href = 'BuyAndSell_Properties.html';
-	 					},error:function(jqXHR,testStatus,errorThrown)
-	 					{
-	 						alert("error");
-	 						console.log("wrong");
-	 					}
-	 				}
-	 				);
 
-	 	}
-	 </script>
 </body>
 </html>

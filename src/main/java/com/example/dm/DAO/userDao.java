@@ -15,6 +15,6 @@ import com.example.dm.models.user;
 public interface userDao extends JpaRepository<user,Integer> {
 	
 	@Query("select a from user a where a.email=:email and a.password=:password")
-	public user login(@Param("email") String email , @Param("password") String password);
+	public user login(@Param("email") String email, @Param("password") String password);
 
 }

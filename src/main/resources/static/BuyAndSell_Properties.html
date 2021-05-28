@@ -12,17 +12,21 @@
 </script>
 <script type='text/javascript'>//<![CDATA[
 $(function(){
-	var uri = 'https://extendsclass.com/api/json-storage/bin/fbddafe';
+	//var uri = 'https://extendsclass.com/api/json-storage/bin/fbddafe';
+	var uri = 'user/getAllProp';
 	var ids = 0;
 	var data_src = '';
 	$.ajax(
-	{url: uri,
+	{
+		url: uri,
 	type: 'GET',
-	data: '',
+	//data: '',
 	contentType: 'application/json; charset=utf-8',
+	
 	dataType: 'json',
+	
 	success: function (data, textStatus, jqXHR) {
-	var jsonStr = JSON.stringify(data.data);
+	var jsonStr = JSON.stringify(data);
 	var html_view ='<table><tr>';
 	html_view = html_view + '<th>id</th>';
 	html_view = html_view + '<th>Location</th>';
@@ -36,19 +40,19 @@ $(function(){
 	html_view = html_view + '<th>Photo4</th>';
 	html_view = html_view + '<th>Photo5</th>';
 	html_view = html_view + '</tr>';
-	for(var i = 0 ; i < data.data.length; i++){
+	for(var i = 0 ; i < data.length; i++){
 	html_view = html_view + '<tr>';
-	html_view = html_view + '<td>'+data.data[i].id+'</td>';
-	html_view = html_view + '<td>'+data.data[i].Location+'</td>';
-	html_view = html_view + '<td>'+data.data[i].Types+'</td>';
-	html_view = html_view + '<td>'+data.data[i].Area+'</td>';
-	html_view = html_view + '<td>'+data.data[i].Describtion+'</td>';
-	html_view = html_view + '<td>'+data.data[i].Price+'</td>';
-	html_view = html_view + '<td><img src="'+data.data[i].Photo1+'" width="100px" height="75px"</td>';
-	html_view = html_view + '<td><img src="'+data.data[i].Photo2+'" width="100px" height="75px"</td>';
-	html_view = html_view + '<td><img src="'+data.data[i].Photo3+'" width="100px" height="75px"</td>';
-	html_view = html_view + '<td><img src="'+data.data[i].Photo4+'" width="100px" height="75px"</td>';
-	html_view = html_view + '<td><img src="'+data.data[i].Photo5+'" width="100px" height="75px"</td>';
+	html_view = html_view + '<td>'+data[i].id+'</td>';
+	html_view = html_view + '<td>'+data[i].location+'</td>';
+	html_view = html_view + '<td>'+data[i].type+'</td>';
+	html_view = html_view + '<td>'+data[i].area+'</td>';
+	html_view = html_view + '<td>'+data[i].describtion+'</td>';
+	html_view = html_view + '<td>'+data[i].price+'</td>';
+	html_view = html_view + '<td><img src="'+data[i].photo1+'" width="100px" height="75px"</td>';
+	html_view = html_view + '<td><img src="'+data[i].photo2+'" width="100px" height="75px"</td>';
+	html_view = html_view + '<td><img src="'+data[i].photo3+'" width="100px" height="75px"</td>';
+	html_view = html_view + '<td><img src="'+data[i].photo4+'" width="100px" height="75px"</td>';
+	html_view = html_view + '<td><img src="'+data[i].photo5+'" width="100px" height="75px"</td>';
 	html_view = html_view + '</tr>';
 	}
 	html_view = html_view + '</table>';
