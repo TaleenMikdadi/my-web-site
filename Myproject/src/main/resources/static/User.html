@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="windows-1256">
+<title>Insert title here</title>
+</head>
+<body>
+<?php
+
+ 
+
+### MySQL data
+
+$mysql_host = "localhost";
+
+$mysql_user = "root";
+
+$mysql_pass = "mysql";
+
+$mysql_base = "myscope";
+
+ 
+
+//news tables
+
+$db_table['news_cat'] = "news_cat";
+
+$db_table['news_item'] = "news_item";
+
+ 
+
+ 
+
+###############################
+
+### Don`t change anything there
+
+###############################
+
+ 
+
+$mysql_link = mysql_pconnect($mysql_host, $root, $taleen2005);
+
+$db = mysql_select_db($mysql_base, $mysql_link);
+
+ 
+
+ 
+
+?>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+@charset "windows-1256";
+body{
+	background-color: #228B22;
+}
+h{
+	font-size:32px;
+	font-weight: bold;
+}
+p{
+	font-size:24px;
+}
+img{
+	position:center;
+}

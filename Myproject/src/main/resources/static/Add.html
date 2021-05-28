@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<font color="black">
+<head>
+<meta charset="windows-1256">
+<meta http-equiv='content-type' content='text/html; charset=UTF-8'>
+<title>Add Property</title>
+<style>
+input[type=text], select {
+width: 100%;
+padding: 12px 20px;
+margin: 8px 0;
+display: inline-block;
+border: 1px solid #ccc;
+ border-radius: 4px;
+ box-sizing: border-box;
+}
+input[type=button] {
+width: 100%;
+background-color: #4CAF50;
+color: white;
+font-size: 14px;
+padding: 14px 20px;
+margin: 8px 0;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+}
+input[type=button]:hover {
+background-color: #45a049;
+}
+div {
+border-radius: 5px;
+background-color: #ADFF2F;
+padding: 20px;
+}
+.footer {
+position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+background-color: #4CAF50;
+color: white;
+text-align: center;
+}
+.classname{
+width: 97%;
+background-color: #4CAF50;
+color:#ffffff;
+font-size: 14px;
+padding: 14px 20px;
+margin: 8px 0;
+border: none;
+border-radius: 4px;
+display:inline-block;
+text-decoration:none;
+text-align:center;
+cursor: pointer;
+font-family:arial;
+font-style:normal;
+}
+.classname:hover {
+background-color: #45a049;
+padding: 14px 20px;
+margin: 8px 0;
+border: none;
+border-radius: 4px;
+display:inline-block;
+font-family:arial;
+font-style:normal;
+font-size:14px;
+width:97%;
+text-decoration:none;
+text-align:center;
+cursor: pointer;
+}
+</style>
+<script type='text/javascript' src='https://code.jquery.com/jquery-1.11.0.js'>
+</script>
+<script type='text/javascript'>//<![CDATA[
+$(function(){
+$('#clickMe').click(function () {
+var uri = 'https://extendsclass.com/api/json-storage/bin/fbddafe';
+var ids = 0;
+var data_src = '';
+$('#info').html('Connecting to data storage ...');
+$.ajax(
+{url: uri,
+type: 'GET',
+data: '',
+contentType: 'application/json; charset=utf-8',
+dataType: 'json',
+success: function (data, textStatus, jqXHR) {
+ $('#info').html('Connected! ...');
+ids = data.ids;
+var newdata_Location = $('#Location').val();
+var newdata_Types = $('#Types').val();
+var newdata_Area = $('#Area').val();
+var newdata_Describtion = $('#Describtion').val();
+var newdata_Price = $('#Price').val();
+var newdata_Photo1 = $('#Photo1').val();
+var newdata_Photo2 = $('#Photo2').val();
+var newdata_Photo3 = $('#Photo3').val();
+var newdata_Photo4 = $('#Photo4').val();
+var newdata_Photo5 = $('#Photo5').val();
+var newdata_id = ++ids;
+data['data'].push({'Location':newdata_Location,'Types':newdata_Types,'Area':newdata_Area,'Describtion':newdata_Describtion,'Price':newdata_Price,'Photo1':newdata_Photo1, 'Photo2':newdata_Photo2, 'Photo3':newdata_Photo3, 'Photo4':newdata_Photo4, 'Photo5':newdata_Photo5,'id':newdata_id+''});
+data.ids = ids;
+var jsonStr = JSON.stringify(data);
+$('#info').html('Adding new data ....')
+$.ajax({
+url: 'https://extendsclass.com/api/json-storage/bin/fbddafe',
+type: 'PUT',
+data: jsonStr,
+contentType: 'application/json; charset=utf-8',
+dataType: 'json',
+success: function (data, textStatus, jqXHR) {
+var json = JSON.stringify(data);
+$('#info').html('Done!');
+$('#Location').val('');
+$('#Types').val('');
+$('#Area').val('');
+$('#Describtion').val('');
+$('#Price').val('');
+$('#Photo1').val('');
+$('#Photo2').val('');
+$('#Photo3').val('');
+$('#Photo4').val('');
+$('#Photo5').val('');
+}
+});
+}
+});
+});
+});
+//]]></script>
+</head> 
+<body>
+<body style="background-color: #228B22;">
+<link rel="icon" href="BuyAndSell Properties Logo">
+<h2>Add Property</h2>
+<div>
+ <label for='Location'>Location</label><br>
+<input type='text' id='Location' name='Location'><br>
+ <label for='Types'>Type</label><br>
+<input type='text' id='Types' name='Type'><br>
+ <label for='Area'>Area</label><br>
+<input type='text' id='Area' name='Area'><br>
+ <label for='Describtion'>Describtion</label><br>
+<input type='text' id='Describtion' name='Describtion'><br>
+ <label for='Price'>Price</label><br>
+<input type='text' id='Price' name='Price'><br>
+ <label for='Photo1'>Photo1</label><br>
+<input type='text' id='Photo1' name='Photo1'><br>
+ <label for='Photo2'>Photo2</label><br>
+<input type='text' id='Photo2' name='Photo2'><br>
+ <label for='Photo3'>Photo3</label><br>
+<input type='text' id='Photo3' name='Photo3'><br>
+ <label for='Photo4'>Photo4</label><br>
+<input type='text' id='Photo4' name='Photo4'><br>
+ <label for='Photo5'>Photo5</label><br>
+<input type='text' id='Photo5' name='Photo5'><br>
+<br>
+<input id='clickMe' type='button' value='Add Property' />
+ <a href='BuyAndSell_Properties.html'class="classname">Back To Home Page</a><br>
+</div>
+</body>
+</font>
+</html>
