@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<font color="black">
+<head>
+<meta charset="windows-1256">
+<meta http-equiv='content-type' content='text/html; charset=UTF-8'>
+ <title>Remove Property</title>
+<style>
+input[type=text], select {
+width: 100%;
+padding: 12px 20px;
+margin: 8px 0;
+display: inline-block;
+border: 1px solid #000000;
+background-color: #ADFF2F;
+color: black;
+border-radius: 4px;
+box-sizing: border-box;
+}
+input[type=button] {
+width: 100%;
+background-color: #000000;
+color: white;
+font-size: 14px;
+padding: 14px 20px;
+margin: 8px 0;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+}
+input[type=button]:hover {
+background-color: #45a049;
+}
+div {
+border-radius: 5px;
+background-color:#ADFF2F;
+padding: 20px;
+}
+.footer {
+position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+background-color: #4CAF50;
+color: white;
+text-align: center;
+
+ }
+.classname{
+width: 97%;
+background-color: #000000;
+color: white;
+font-size: 14px;
+padding: 14px 20px;
+margin: 8px 0;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+display:inline-block;
+text-decoration:none;
+text-align:center;
+font-family:arial;
+font-style:normal;
+ }
+.classname:hover{
+background-color: #45a049;
+width: 97%;
+color: white;
+font-size: 14px;
+padding: 14px 20px;
+margin: 8px 0;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+display:inline-block;
+text-decoration:none;
+text-align:center;
+font-family:arial;
+font-style:normal;
+}
+</style>
+<script type='text/javascript' src='https://code.jquery.com/jquery-1.11.0.js'>
+</script>
+<script type='text/javascript'>//<![CDATA[
+$(function(){
+$('#clickMe').click(function () {
+var uri = 'https://extendsclass.com/api/json-storage/bin/fbddafe'
+var ids = 0;
+var data_src = '';
+$('#info').html('Connecting to data storage ...');
+$.ajax(
+{url: uri,
+type: 'GET',
+data: '',
+contentType: 'application/json; charset=utf-8',
+dataType: 'json',
+success: function (data, textStatus, jqXHR) {
+var del_id = $('#data_id').val();
+$('#info').html('Connected! ... ');
+jQuery(data.data).each(function (index){
+if(del_id.localeCompare(data.data[index].id) == 0){
+data.data.splice(index,1);
+return false;
+}
+});
+var jsonStr = JSON.stringify(data);
+$('#info').html('Delete data ...');
+$.ajax({
+url: 'https://extendsclass.com/api/json-storage/bin/fbddafe',
+type: 'PUT',
+data: jsonStr,
+contentType: 'application/json; charset=utf-8',
+dataType: 'json',
+success: function (data, textStatus, jqXHR) {
+var json = JSON.stringify(data);
+$('#data_id').val('');
+$('#info').html('Done');
+}
+});
+}
+});
+});
+});
+//]]></script>
+</head>
+<body style="background-color: #228B22;">
+<body>
+<h2>Remove Property</h2>
+<label for='data_id'>id</label><br>
+<input type='text' id='data_id' name='data_id'><br>
+<br>
+<input id='clickMe' type='button' value='Remove Property' />
+ <a href='BuyAndSell_Properties.html'class="classname">Back To Home Page</a><br>
+</body>
+</font>
+</html>

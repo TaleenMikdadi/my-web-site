@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<font color="black">
+<head>
+<meta charset="windows-1256">
+<meta http-equiv='content-type' content='text/html; charset=UTF-8'>
+<title>BuyAndSell Properties</title>
+<button onclick="document.location='add.html'" style="position: absolute; left: 0;">Add Property</button>
+<link rel="icon" href="BuyAndSell Properties Logo.png">
+<button onclick="document.location='delete.html'" style="position: absolute; right: 0;">Remove Property</button>
+<style>
+button{
+width: 20%;
+background-color: #000000;
+color: white;
+font-size: 24px;
+padding: 14px 20px;
+margin: 8px 0;
+border: none;
+border-radius: 4px;
+height:150px;
+width:400px;
+cursor: pointer;
+}
+button:hover {
+background-color: #ADFF2F;
+color: black;
+}
+table {
+ font-family: arial, sans-serif;
+border-collapse: collapse;
+width: 100%;
+}
+td, th {
+border: 1px solid #000000;
+text-align: left;
+padding: 8px;
+}
+tr:nth-child(even) {
+ background-color: #ADFF2F;
+color: #000000;
+}
+tr:nth-child(odd) {
+ background-color: #FFFFFF;
+color: #000000;
+.footer {
+position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+ background-color: #FFFFFF;
+color: #000000;
+text-align: center;
+}
+</style>
+ <script type='text/javascript' src='https://code.jquery.com/jquery-1.11.0.js'>
+</script>
+<script type='text/javascript'>//<![CDATA[
+$(function(){
+var uri = 'https://extendsclass.com/api/json-storage/bin/fbddafe';
+var ids = 0;
+var data_src = '';
+$.ajax(
+{url: uri,
+type: 'GET',
+data: '',
+contentType: 'application/json; charset=utf-8',
+dataType: 'json',
+success: function (data, textStatus, jqXHR) {
+var jsonStr = JSON.stringify(data.data);
+var html_view ='<table><tr>';
+html_view = html_view + '<th>id</th>';
+html_view = html_view + '<th>Location</th>';
+html_view = html_view + '<th>Type</th>';
+html_view = html_view + '<th>Area</th>';
+html_view = html_view + '<th>Describtion</th>';
+html_view = html_view + '<th>Price</th>';
+html_view = html_view + '<th>Photo1</th>';
+html_view = html_view + '<th>Photo2</th>';
+html_view = html_view + '<th>Photo3</th>';
+html_view = html_view + '<th>Photo4</th>';
+html_view = html_view + '<th>Photo5</th>';
+html_view = html_view + '</tr>';
+for(var i = 0 ; i < data.data.length; i++){
+html_view = html_view + '<tr>';
+html_view = html_view + '<td>'+data.data[i].id+'</td>';
+html_view = html_view + '<td>'+data.data[i].Location+'</td>';
+html_view = html_view + '<td>'+data.data[i].Types+'</td>';
+html_view = html_view + '<td>'+data.data[i].Area+'</td>';
+html_view = html_view + '<td>'+data.data[i].Describtion+'</td>';
+html_view = html_view + '<td>'+data.data[i].Price+'</td>';
+html_view = html_view + '<td><img src="'+data.data[i].Photo1+'" width="100px" height="75px"</td>';
+html_view = html_view + '<td><img src="'+data.data[i].Photo2+'" width="100px" height="75px"</td>';
+html_view = html_view + '<td><img src="'+data.data[i].Photo3+'" width="100px" height="75px"</td>';
+html_view = html_view + '<td><img src="'+data.data[i].Photo4+'" width="100px" height="75px"</td>';
+html_view = html_view + '<td><img src="'+data.data[i].Photo5+'" width="100px" height="75px"</td>';
+html_view = html_view + '</tr>';
+}
+html_view = html_view + '</table>';
+$('#data_view').html(html_view);
+}
+});
+});
+//]]></script>
+</head>
+<style>
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+<body style="background-color: #228B22;">
+<img src="BuyAndSell Properties Logo.png" alt="logo" width="150" height="150" >
+<font color="black">
+<center>BuyAndSell Properties </center>
+</font>
+<div id='data_view'> <font color="black">
+Loading Data , Please wait ....
+</font>
+</div>
+<br>
+<br>
+<div id='data_str'>
+<br> <font color="black">
+Access from Android App/Server: <a href='https://extendsclass.com/api/json-storage/bin/fbddafe' target='_blank'>
+https://extendsclass.com/api/json-storage/bin/fbddafe</a>
+</font>
+</div>
+<div class='blank'>
+</div>
+</body>
+</font>
+</html>
