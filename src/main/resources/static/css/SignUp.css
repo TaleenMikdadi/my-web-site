@@ -71,30 +71,36 @@ h1{
     font-family:arial;
     font-style:normal;
 }
-form input[type="button"]{
-    text-align:center;
-    border:none;
-	outline: none;
-	height:40px;
-	background: #45a049;
-	color:#fff;
-	font-size:18px;
-	border-radius:20px;
-	width:350px;
+.classname {
+	background-color:#45a049;
+	-webkit-border-top-left-radius:20px;
+	-moz-border-radius-topleft:20px;
+	border-top-left-radius:20px;
+	-webkit-border-top-right-radius:20px;
+	-moz-border-radius-topright:20px;
+	border-top-right-radius:20px;
+	-webkit-border-bottom-right-radius:20px;
+	-moz-border-radius-bottomright:20px;
+	border-bottom-right-radius:20px;
+	-webkit-border-bottom-left-radius:20px;
+	-moz-border-radius-bottomleft:20px;
+	border-bottom-left-radius:20px;
+	display:inline-block;
+	color:#ffffff;
 	font-family:arial;
+	font-size:18px;
 	font-style:normal;
     height:50px;
-    margin:2px;
+	line-height:50px;
+    width:350px;
+	text-decoration:none;
+	text-align:center;
+	cursor:pointer;
 }
- form input[type="button"]:hover{
-    cursor:pointer;
-	background:#228B22;
-	color: #000;
-	width:350px;
-    height:50px;
-    margin:2px;
-    font-family:arial;
-    font-style:normal;
+.classname:hover {
+	background-color:#228B22;
+	cursor:pointer;
+	color: black;
 }
     *:lang(ar) { direction:rtl }
     *:lang(en) { direction:ltr }

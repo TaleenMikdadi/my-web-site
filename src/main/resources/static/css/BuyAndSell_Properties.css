@@ -18,12 +18,14 @@ color: black;
 }
 a {  
 text-align:center;
-background-color: black;
-color: white;
-font-size: 24px;
+background-color: #FF4500;
+color: black;
+font-size: 22px;
+width:30px;
+height:15px;
 }
 a:hover {
-background-color: #ADFF2F;
+background-color: #FA8072;
 color: black;
 }
 table {
@@ -44,7 +46,7 @@ tr:nth-child(odd) {
  background-color: #FFFFFF;
 color: #000000;
 .footer {
- position: fixed;
+position: fixed;
 left: 0;
 bottom: 0;
 width: 100%;

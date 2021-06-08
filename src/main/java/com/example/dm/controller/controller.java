@@ -1,11 +1,13 @@
 package com.example.dm.controller;
 
 import java.util.Collection;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.dm.models.property;
@@ -28,6 +30,11 @@ public class controller {
 	{
 		return proserv.addProperty(p);
 	}
+	@DeleteMapping("admin/deleteP/{id}")
+	public void removeById(@RequestParam(name="id") int id)
+	{
+		 proserv.removeP(id);
+	}
 	
 	@GetMapping(value="user/getAllProp")
 	public Collection<property> getAll()
@@ -35,18 +42,15 @@ public class controller {
 		return proserv.getAll();
 	}
 	
-	@GetMapping("/admin/{email}/{password}")
-	public user login(@PathVariable(name="email") String email, @PathVariable String password)
+	@PostMapping(value ="admin/userLogin/{email}/{password}")
+	public user loginUser(@PathVariable(name="email" )String  email , @PathVariable String password)
 	{
-		return serv.login( email, password);
+		return serv.login(email, password);
 	}
-	
-	//add user then return good when added
 	@PostMapping(value="admin/addUser", consumes ="application/json",produces ="application/json")
 	public user addUsers(@RequestBody user u) {
 		System.out.println(u);
 		return serv.addUser(u);
-		//return "good";
 	}
 	
 	@GetMapping("/admin/getAll")

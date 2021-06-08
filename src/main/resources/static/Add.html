@@ -10,8 +10,6 @@
 </script>
 <script type='text/javascript'>//<![CDATA[
 	function addProperty(){
-
-
 	var model={ 
 	'location' : $('#location').val(),
 	'type' : $('#types').val(),
@@ -24,17 +22,9 @@
 	'photo4' : $('#photo4').val(),
 	'photo5' : $('#photo5').val(),
 	}
-	//var newdata_id = ++ids;
-	//data['data'].push({'Location':newdata_Location,'Types':newdata_Types,'Area':newdata_Area,'Describtion':newdata_Describtion,'Price':newdata_Price,'Photo1':newdata_Photo1, 'Photo2':newdata_Photo2, 'Photo3':newdata_Photo3, 'Photo4':newdata_Photo4, 'Photo5':newdata_Photo5,'id':newdata_id+''});
-	//data.ids = ids;
-	//var jsonStr = JSON.stringify(data);
-	//$('#info').html('Adding new data ....')
-	console.log(model);
 	$.ajax({
-	//url: 'https://extendsclass.com/api/json-storage/bin/fbddafe',
 	url:'user/addPro',
 	type: 'POST',
-	//data: jsonStr,
 	contentType: 'application/json; charset=utf-8',
 	dataType: 'json',
 	data:this.JSON.stringify(model),

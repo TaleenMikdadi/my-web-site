@@ -21,5 +21,8 @@ public class propertyService {
 	{
 		return pdao.findAll();
 	}
-
+	public void removeP(int id)
+	 {
+		 pdao.deleteById(id);
+	 }
 }
